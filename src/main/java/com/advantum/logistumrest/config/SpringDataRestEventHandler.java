@@ -2,7 +2,6 @@ package com.advantum.logistumrest.config;
 
 import com.advantum.logistumrest.dao.CustomerRepository;
 import com.advantum.logistumrest.model.*;
-import org.apache.catalina.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
@@ -28,7 +27,7 @@ public class SpringDataRestEventHandler {
 		if (customer == null) {
 			Customer newManager = new Customer();
 			newManager.setLogin(login);
-			newManager.setRoles(new String[]{"ROLE_MANAGER"});
+			newManager.setRole("ROLE_MANAGER");
 			customer = this.customerRepository.save(newManager);
 		}
 		ticket.setCustomer(customer);

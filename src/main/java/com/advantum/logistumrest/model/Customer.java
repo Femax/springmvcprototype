@@ -6,6 +6,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -25,12 +27,12 @@ public class Customer {
     private String offloadingContactName;
     private String loadingPhone;
     private String offloadingPhone;
-    private String[] roles;
+    private String role;
 
     public Customer() {
     }
 
-    public Customer(String contactName, String loadingContactName, String offloadingContactName, String login, String password, String loadingPhone, String offloadingPhone, String... roles) {
+    public Customer(String contactName, String loadingContactName, String offloadingContactName, String login, String password, String loadingPhone, String offloadingPhone, String role) {
         this.contactName = contactName;
         this.loadingContactName = loadingContactName;
         this.offloadingContactName = offloadingContactName;
@@ -38,7 +40,7 @@ public class Customer {
         this.offloadingPhone = offloadingPhone;
         this.login = login;
         this.setPassword(password);
-        this.roles = roles;
+        this.role = role;
     }
 
     public Long getId() {
@@ -89,13 +91,15 @@ public class Customer {
         this.password = PASSWORD_ENCODER.encode(password);
     }
 
-    public String[] getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(String[] roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
+
+
 
     public String getLoadingPhone() {
         return loadingPhone;
