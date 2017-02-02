@@ -62,8 +62,8 @@ public class DatabaseLoader implements CommandLineRunner {
 		Ticket ticket1 = this.tickets.save(new Ticket("11-11-17",TicketStatus.NEW,800,greg));
 		route = this.routes.save(new Route(RouteStatus.NONE,ticket1));
 		this.routeStartaddresses.save(new RouteStartAddress("Moscow",55.44,55.22,route));
-		cargo = this.cargo.save(new Cargo(200f,800f,4, Cargo.Type.BOX));
-		RouteItem routeItem =  this.routeItems.save(new RouteItem(0,"notes",cargo,route));
+		RouteItem routeItem =  this.routeItems.save(new RouteItem(0,"notes",route));
+		this.cargo.save(new Cargo(200f,800f,4,routeItem, Cargo.Type.BOX));
 		this.routeItemAdresesses.save(new RouteItemAddress("Moscow",55.44,55.22, routeItem));
 
 

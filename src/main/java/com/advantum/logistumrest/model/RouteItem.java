@@ -34,12 +34,10 @@ public class RouteItem {
     public RouteItem() {
     }
 
-    public RouteItem(int order, String notes, Cargo cargo, Route route) {
-        this.address = address;
+    public RouteItem(int order, String notes, Route route) {
         this.order = order;
 //        this.offloadTime = offloadTime;
         this.notes = notes;
-        this.cargo = cargo;
         this.route = route;
     }
 

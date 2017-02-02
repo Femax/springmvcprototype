@@ -1,6 +1,8 @@
 package com.advantum.logistumrest.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Cargo {
     private Type type = Type.BOX;
     @Column(name = "route_item_id", insertable = false, updatable = false)
     private long routeItemId;
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "route_item_id")
     private RouteItem routeItem;
@@ -26,8 +29,8 @@ public class Cargo {
     public Cargo() {
     }
 
-    public Cargo(float minWeight, float maxWeight, int count, Type type) {
-        this.id = id;
+    public Cargo(float minWeight, float maxWeight, int count, RouteItem routeItem, Type type) {
+        this.routeItem = routeItem;
         this.minWeight = minWeight;
         this.maxWeight = maxWeight;
         this.count = count;
