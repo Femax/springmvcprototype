@@ -127,11 +127,11 @@ public class TokenUtils {
   }
 
   public Boolean validateToken(String token, UserDetails userDetails) {
-    SecurityUser user = (SecurityUser) userDetails;
+    UserDetails user =  userDetails;
     final String username = this.getUsernameFromToken(token);
     final Date created = this.getCreatedDateFromToken(token);
     final Date expiration = this.getExpirationDateFromToken(token);
-    return (username.equals(user.getUsername()) && !(this.isTokenExpired(token)) && !(this.isCreatedBeforeLastPasswordReset(created, user.getLastPasswordReset())));
+    return (username.equals(user.getUsername()) && !(this.isTokenExpired(token)));
   }
 
 }
